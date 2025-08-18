@@ -1,17 +1,269 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Hi, I’m Sunil</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <style>body{font:16px/1.5 system-ui,Arial;margin:40px;max-width:720px}</style>
-  </head>
-  <body>
-    <h1>Welcome</h1>
-    <p>I build AI + data projects. This is my portfolio.</p>
-    <ul>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunil Unnikrishnan — AI, Data, Automation</title>
+  <meta name="description" content="Sunil Unnikrishnan — portfolio of AI, data, automation and product work. Projects, experience, and ways to connect." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --card: #10131a;
+      --muted: #a3acc2;
+      --text: #e8ecf8;
+      --brand: #7c9cff;
+      --brand-2: #16dac5;
+      --ring: 0 0 0 3px rgba(124,156,255,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    header { position: sticky; top: 0; backdrop-filter: saturate(150%) blur(8px); background: rgba(11,13,18,.65); border-bottom: 1px solid rgba(255,255,255,.06); z-index: 50; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; gap:12px; align-items:center; font-weight:700; letter-spacing:.2px; }
+    .brand .logo { width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; box-shadow: 0 10px 30px rgba(124,156,255,.35); }
+    .brand .logo svg { width:20px; height:20px; fill:white; }
+    .navlinks { display:flex; gap:20px; align-items:center; }
+    .navlinks a { color: var(--text); opacity:.85; font-weight:500; }
+    .btn { display:inline-flex; gap:8px; align-items:center; background: linear-gradient(135deg, #1a1f2b, #0f1320); border:1px solid rgba(255,255,255,.08); color: #eaf2ff; padding:10px 14px; border-radius:12px; font-weight:600; transition: transform .15s ease, box-shadow .15s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(22,218,197,.15); text-decoration:none; }
+
+    /* Hero */
+    .hero { position:relative; padding:78px 0 56px; overflow: hidden; }
+    .blob { position:absolute; inset:auto -20% -35% -20%; height: 600px; background: radial-gradient(closest-side, rgba(124,156,255,.25), transparent 70%), radial-gradient(closest-side, rgba(22,218,197,.18), transparent 70%); filter: blur(60px); pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:40px; align-items:center; }
+    .hero h1 { font-size: clamp(32px, 5vw, 56px); line-height:1.05; margin: 0 0 14px; letter-spacing:-.5px; }
+    .subtitle { color: var(--muted); font-size: clamp(16px, 2.5vw, 18px); max-width: 70ch; }
+    .badge { display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background: rgba(124,156,255,.15); border:1px solid rgba(124,156,255,.25); color:#cfe0ff; font-weight:600; margin-bottom:16px; }
+    .cta { display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:20px; display:grid; gap:14px; }
+
+    /* Sections */
+    section { padding: 56px 0; }
+    .section-title { font-size: 24px; font-weight: 800; margin: 0 0 18px; letter-spacing:.2px; }
+    .muted { color: var(--muted); }
+
+    /* Projects */
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.07); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; transition: transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+    .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(124,156,255,.25), rgba(22,218,197,.22)); display:grid; place-items:center; font-weight:800; letter-spacing:.6px; }
+    .card-body { padding:16px; display:grid; gap:8px; }
+    .chiprow { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip { font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color:#dbe6ff; }
+
+    /* Experience */
+    .timeline { border-left: 2px dashed rgba(255,255,255,.14); padding-left: 18px; margin-left: 6px; display:grid; gap:18px; }
+    .tl-item { position:relative; }
+    .tl-item::before { content:""; position:absolute; left:-23px; top:4px; width:10px; height:10px; border-radius:50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 2px 8px rgba(124,156,255,.6); }
+
+    /* Contact */
+    form { display:grid; gap:12px; }
+    input, textarea { width:100%; padding:12px 14px; background:#0e121b; border:1px solid rgba(255,255,255,.12); color: var(--text); border-radius:12px; outline:none; }
+    input:focus, textarea:focus { box-shadow: var(--ring); }
+    textarea { min-height: 140px; resize:vertical; }
+
+    /* Footer */
+    footer { padding: 40px 0 60px; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); margin-top: 24px; }
+
+    /* Utilities */
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .spacer { height: 16px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img" aria-label="logo"><path d="M12 2l3.09 6.26L22 9.27l-5 4.88L18.18 22 12 18.77 5.82 22 7 14.15 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <span>Sunil Unnikrishnan</span>
+        </div>
+        <div class="navlinks">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+          <button class="btn" id="themeBtn" aria-label="Toggle theme">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 000 18 9 9 0 010-18zM12 1a1 1 0 011 1v2a1 1 0 01-2 0V2a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zM3 11H1a1 1 0 100 2h2a1 1 0 100-2zm22 0h-2a1 1 0 100 2h2a1 1 0 100-2zM5.64 5.64a1 1 0 011.41 0l1.42 1.42a1 1 0 01-1.42 1.41L5.64 7.05a1 1 0 010-1.41zm10.89 10.9a1 1 0 011.41 0l1.42 1.41a1 1 0 11-1.42 1.42l-1.41-1.42a1 1 0 010-1.41zM18.36 5.64a1 1 0 010 1.41l-1.42 1.42a1 1 0 11-1.41-1.42l1.41-1.41a1 1 0 011.42 0zM7.05 16.95a1 1 0 010 1.41L5.64 19.78a1 1 0 11-1.41-1.42l1.41-1.41a1 1 0 011.41 0z"/></svg>
+            <span>Theme</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="blob" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">AI • Data • Automation • Presales</div>
+          <h1>Building useful AI from napkin to production.</h1>
+          <p class="subtitle">I’m Sunil — I design and ship AI/ML and automation solutions across data pipelines, MLOps, and product. 20+ years across presales, solution architecture, and agile delivery.</p>
+          <div class="cta">
+            <a class="btn" href="#projects">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l7 6h-4v7H9V9H5l7-6z"/></svg>
+              View Projects
+            </a>
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6"/></svg>
+              Download Résumé
+            </a>
+            <a class="btn" href="#contact">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 8v8a2 2 0 01-2 2H5l-4 4V6a2 2 0 012-2h16a2 2 0 012 2z"/></svg>
+              Contact
+            </a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="row">
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">LLMs</span>
+            <span class="chip">RAG</span>
+            <span class="chip">MLOps</span>
+          </div>
+          <div class="row">
+            <span class="chip">Streamlit / Gradio</span>
+            <span class="chip">GCP / Cloud Run</span>
+            <span class="chip">Hugging Face</span>
+          </div>
+          <p class="muted">Recent focus: agentic apps, evaluation frameworks, vector search, and productionizing prototypes without drama.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="muted">A mix of demos and production work. Code or live links available where possible.</p>
+        <div class="spacer"></div>
+        <div class="grid">
+          <article class="card">
+            <div class="thumb">Eva — Event AI</div>
+            <div class="card-body">
+              <h3>Eva: Agentic Event Assistant</h3>
+              <p class="muted">Multi-agent planner for event scheduling, vendor matching, and live announcements. RAG + tools + eval harness.</p>
+              <div class="chiprow">
+                <span class="chip">FastAPI</span><span class="chip">Postgres</span><span class="chip">OpenAI / HF</span>
+              </div>
+              <div class="row">
+                <a class="btn" href="#" target="_blank" rel="noopener">Live Demo</a>
+                <a class="btn" href="#" target="_blank" rel="noopener">Source</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb">Vision QA</div>
+            <div class="card-body">
+              <h3>Vision QA for Amazon Listings</h3>
+              <p class="muted">Automated checks for image quality, colorway consistency, and spec coverage in PDPs. Reports with fix suggestions.</p>
+              <div class="chiprow">
+                <span class="chip">Python</span><span class="chip">Vision</span><span class="chip">Streamlit</span>
+              </div>
+              <div class="row">
+                <a class="btn" href="#" target="_blank" rel="noopener">Case Study</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb">RAG Eval</div>
+            <div class="card-body">
+              <h3>RAG Evaluation Harness</h3>
+              <p class="muted">Dataset curation, judges, and telemetry to tune retrieval and prompts. Clear, repeatable metrics.</p>
+              <div class="chiprow">
+                <span class="chip">Python</span><span class="chip">HF Datasets</span><span class="chip">Weights & Biases</span>
+              </div>
+              <div class="row">
+                <a class="btn" href="#" target="_blank" rel="noopener">Docs</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <h3>Head of Presales & Ecosystem — Beyond Now</h3>
+            <p class="muted">IoT • Data • AI • Cloud • DevOps • SAFe</p>
+          </div>
+          <div class="tl-item">
+            <h3>Solutions & Product — Various</h3>
+            <p class="muted">Strategy, solution architecture, agile delivery, and automation at scale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Let’s build something</h2>
+        <p class="muted">Drop a note. I usually respond in a day.</p>
+        <div class="spacer"></div>
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <div class="row">
+            <input name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <input name="subject" placeholder="Subject">
+          <textarea name="message" placeholder="Tell me a bit about your project…" required></textarea>
+          <button class="btn" type="submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row" style="justify-content:space-between;">
+      <div>© <span id="year"></span> Sunil Unnikrishnan</div>
+      <div class="row">
+        <a href="https://github.com/sunilgit" target="_blank" rel="noopener" class="btn">GitHub</a>
+        <a href="https://www.linkedin.com/in/sukrishnan" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+        <a href="mailto:sukrishnan@gmail.com" class="btn">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark/Light theme toggle (keeps the same palette but you can extend if you want)
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn?.addEventListener('click', () => {
+      document.documentElement.classList.toggle('light');
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
